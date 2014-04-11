@@ -9,34 +9,32 @@
 
 int main (int argc, char *argv[])
 {
-	//FILE *ERR = stdout;
 	FILE *fp;
 	int i;
 	char line[100];
 	
 	/* will not run with no arguments */
-	if (argc == "") {
-		printf("Usage: csc322a5 <infile> [<outfile>]");
+	if (argc == 1) {
+		printf("Usage: csc322a5 <infile> [<outfile>]\n");
 		return 0;
 	}
 	
-	//if (argc == 1) {
+	if (argc == 2) {
+		for (i = 1; i < argc; i++) {
+			fp = fopen(argv[i], "r");
+			if (fp == NULL) {
+				printf("Cannot open input file %s",argv[i]);
+				return 1;
+			}
 		
-	
-	for (i = 1; i < argc; i++) {
-		fp = fopen(argv[i], "r");
-		if (fp == NULL) {
-			printf("Cannot open input file %s",argv[i]);
-			return 1;
+			while (fgets(line, sizeof(line), fp) != NULL)
+			{
+				fputs(line, stdout);
+			}
+		
+			fclose(fp);
+		
 		}
-		
-		while (fgets(line, sizeof(line), fp) != NULL)
-		{
-			fputs(line, stdout);
-		}
-		
-		fclose(fp);
-		
 	}
 	
 	return 0;

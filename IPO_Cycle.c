@@ -4,6 +4,7 @@
  */
 
 # include <stdio.h>
+# include <stdlib.h>
 
 
 int main (int argc, char *argv[])
@@ -12,7 +13,7 @@ int main (int argc, char *argv[])
 	int i;
 	char line[100];
 	
-	for (i=0;i<argc;i++)
+	for (i = 1; i < argc; i++)
 	{
 		fp = fopen(argv[i], "r");
 		if (fp == NULL)
@@ -23,8 +24,8 @@ int main (int argc, char *argv[])
 		
 		while (fgets(line, sizeof(line), fp) != NULL)
 		{
-			//fputs(line, stdout);
-			printf("%s", line);
+			fputs(line, stdout);
+			//printf("%s", line);
 		}
 		
 		fclose(fp);

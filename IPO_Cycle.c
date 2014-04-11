@@ -10,7 +10,7 @@ int main (int argc, char *argv[])
 {
 	FILE *fp;
 	int i;
-	int k;
+	double k;
 	
 	for (i=0;i<argc;i++)
 	{
@@ -21,10 +21,10 @@ int main (int argc, char *argv[])
 			return 1;
 		}
 		
-		while ((k = getc(fp)) != EOF)
+		while (fscanf(fp, "%lf", &k) == 1)
 		{
-			putchar(k);
-			printf(k);	
+			/*putchar(k);*/
+			printf("%lf\n",k);
 		}
 		
 		fclose(fp);

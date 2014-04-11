@@ -13,12 +13,13 @@ int main (int argc, char *argv[])
 	int i;
 	char line[100];
 	
-	/* will not run with no arguments */
+	/* will not run with no arguments (# of args after ./IPO_Cycle)*/
 	if (argc == 1) {
 		printf("Usage: csc322a5 <infile> [<outfile>]\n");
 		return 0;
 	}
 	
+	/* if 1 argument use name of input file*/
 	if (argc == 2) {
 		for (i = 1; i < argc; i++) {
 			fp = fopen(argv[i], "r");
